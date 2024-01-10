@@ -1,15 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import List from './components/List';
-
+import List from './Features/library/components/List';
 import { useSelector } from 'react-redux';
-import EditBook from './components/EditBook';
+import EditBook from './Features/library/components/EditBook';
 import { useState } from 'react';
-import AddBook from './components/AddBook';
+import AddBook from './Features/library/components/AddBook';
 
 function App() {
   let [flag, setFlag] = useState(false);
-  let selectToEdit = useSelector(sta => sta.selectedBookToEdit);
+  let selectToEdit = useSelector(sta => sta.librarySlice.selectedBookToEdit);
   const changeFlag = () => {
     setFlag(true);
   }
@@ -20,9 +19,6 @@ function App() {
       <List />
       {selectToEdit && <EditBook />}
       {flag && <AddBook f={setFlag}/>}
-
-
-
     </>
   );
 }
